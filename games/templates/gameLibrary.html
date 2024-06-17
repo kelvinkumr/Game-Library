@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta&family=Rubik&display=swap" rel="stylesheet">
+</head>
+  {% include "header.html" %}
+  {% include "sideNavbar.html" %}
+<body>
+  <div class="library_content">
+    <h1 class="total_games">Total Games - {{num_games}}</h1>
+    {% for game in games %}
+    <a class="game-container" href="{{url_for('gameDescription', game_id=game.game_id)}}">
+      <div class="game-item">
+        <span class="game-title">{{game.title}}</span>
+        <img class="game-image" alt="Cover Image" src="{{ game.image_url }}">
+        <span class="game-info">${{game.price}}</span>
+        <span class="game-info">Release Date: {{game.release_date}}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  <br>
+  <div class = "pagination-container">
+    <form action="{{url_for((pagePath), page = index-1, genre = genre)}}">
+      <button class = "pagination_button" type="submit">Previous</button>
+    </form>
+    <form action="{{url_for((pagePath), page = index+1, genre = genre)}}">
+        <button class = "pagination_button" type="submit">Next</button>
+     </form>
+  </div>
+  <br>
+</body>
+</html>

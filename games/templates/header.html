@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="../static/css/main.css"/>
+    </head>
+    <body>
+        <header id="header">
+            <h1 class="main-title">235 Game Library</h1>
+            <div class="copyright">&copy; kkmu749 | vvol244 | eblu301</div>
+            <div class="btns-container">
+            <a href="{{ url_for('authentication_bp.register') }}" class="btn-nav">Register</a>
+            <a href="{{ url_for('authentication_bp.login') }}" class="btn-nav">Login</a>
+            <a href="{{ url_for('authentication_bp.logout') }}" class="btn-nav btn-logout">Logout</a>
+            </div>
+          </header>
+    </body>
+</html>

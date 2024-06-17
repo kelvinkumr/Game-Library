@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="../../static/css/main.css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mukta&family=Rubik&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="{{ url_for('home') }}"><i class="fas fa-gamepad" style="color: #ffffff;"></i></a>
+            <form action="{{ url_for('search') }}" method="GET">
+                <input type="text" class="query-bar" name="query" placeholder="Search...">
+                <button class = "search_button" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <a href="{% if 'user_name' in session %}{{ url_for('user_profile', username=session['user_name']) }}{% endif %}" id="users-name">
+                {% if 'user_name' in session %} Hello, {{ session['user_name'] }} {% endif %}
+            </a><br>
+            <a href="{{ url_for('home') }}">Home</a><br>
+            <a href="/library/1">Games Library</a><br>
+            <a href="/genres/Action/1">Action</a><br>
+            <a href="/genres/Adventure/1">Adventure</a><br>
+            <a href="/genres/Casual/1">Casual</a><br>
+            <a href="/genres/Indie/1">Indie</a><br>
+            <a href="/genres/RPG/1">RPG</a><br>
+            {% if 'user_name' in session %}
+                <a href="/wishlist/{{ session['user_name'] }}/1">Wishlist</a><br>
+            {% else %}
+                <a href="/wishlist/none/1">Wishlist</a><br>
+            {% endif %}
+        </div>
+    </body>
+</html>

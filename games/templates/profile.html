@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div id="user-details" class="formwrapper">
+        <h2 class="profile_text">Welcome to your profile page, {{ username }}!</h2>
+        <p>The amount of reviews you have given: {{ user.reviews|length }}</p>
+        <p>The amount of games on your wishlist: {{ num_games }}</p>
+    </div>
+    <body>
+        <div class="wishlist-content">
+          <h1 class="wishlist-title">Total Games On Your Wishlist - {{num_games}}</h1>
+          {% for game in wishlist %}
+          <a class="game-container" href="{{url_for('gameDescription', game_id=game.game_id)}}">
+            <div class="game-item">
+              <span class="game-title">{{game.title}}</span>
+              <img class="game-image" alt="Cover Image" src="{{ game.image_url }}">
+              <span class="game-info">${{game.price}}</span>
+              <span class="game-info">Release Date: {{game.release_date}}</span>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+        <br>
+        <div class="wishlist-content">
+        <h2 class="wishlist-title">Your Reviews:</h2>
+        {% for review in reviews %}
+        <a class="game-container" href="{{url_for('gameDescription', game_id=review.game.game_id)}}">
+            <div class="game-item">
+              <span class="game-title">{{review.game.title}}</span>
+              <img class="game-image" alt="Cover Image" src="{{ review.game.image_url }}">
+              <span class="game-info">${{review.game.price}}</span>
+              <span class="game-info">Release Date: {{review.game.release_date}}</span>
+              <span class="game-info">Your rating: {{ review.rating}}</span>
+              <span class="game-info">Your comment: {{ review.comment}}</span>
+            </div><br>
+        </a>
+        {% endfor %}
+        </div>
+{% endblock %}
+</body>

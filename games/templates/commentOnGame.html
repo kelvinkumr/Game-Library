@@ -1,0 +1,33 @@
+<div class="comment-form-wrapper">
+    <form action="{{handler_url}}" method="POST">
+        {{form.game_id}} <!-- Need to include this hidden field as it tracks the game being commented. -->
+        {{form.csrf_token}} <!-- Need to include this token - Flask WTForms requires it. -->
+        {{form.current_rating()}}
+        <br>
+        <div class="rating-scale">
+            {% for i in range(1, 6) %}
+                <label>
+                    <input type="radio" id="star{{ i }}" name="rating" value="{{ i }}"  {% if form.current_rating.data == i %}checked{% endif %}>
+                    {{ i }} stars
+                </label>
+            {% endfor %}
+        </div>
+        <div class ="form-field">{{form.comment.label}} </br>{{form.comment(size = 100, placeholder="type your comment", class="textarea", cols="50", rows="6", wrap="hard")}}
+            {% if form.comment.errors %}
+                <ul class="errors">
+                {% for error in form.comment.errors %}
+                    <li>{{error}}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        {{ form.submit(class="submit-button") }}
+    </form>
+</div>
+<div style="clear:both" class="comments-text">
+    {% for review in game.reviews %}
+        <p>{{review.rating}} stars by {{review.user}} Review: {{review.comment}} </p>
+    {% endfor %}
+</div>
+</game>
+</main>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Description</title>
+    <link
+      rel="stylesheet" href="../static/css/main.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta&family=Rubik&display=swap" rel="stylesheet">
+</head>
+  {% include "header.html" %}
+  {% include "sideNavbar.html" %}
+<body>
+    <div id="container">
+      <main id="main">
+        <div class="description"><br>
+          <div class="centered-content">
+            <h2>{{ game.title }}</h2>
+            <img src="{{ game.image_url }}" alt="game image">
+          </div>
+
+          <p><i>Release Date:</i> {{ game.release_date }} </p>
+          <p><i>Price:</i> ${{ game.price }} (USD)</p>
+          <p><i>About:</i> {{ game.description }} </p>
+          <p><i>Genres:</i> [
+            {% for genre in game.genres %}
+                {{ genre.genre_name }}
+                {% if not loop.last %}, {% endif %}
+            {% endfor %}
+        ]</p>
+        </p>
+          <div class="iframe-container">
+            <iframe width="560" height="315" src="{{ game.video_url }}" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+        {% include "commentOnGame.html" %}
+        <div class="submit-buttons-container">
+        <div id = "add_button" class="submit-btn-wrapper">
+            <form method="POST" action="/add_to_wishlist/{{ game.game_id }}">
+                <button type="submit" class="submit-button">Add to Wishlist</button>
+            </form>
+        </div>
+        <div id = "remove_button" class="submit-btn-wrapper">
+            <form method="POST" action="/remove_from_wishlist/{{ game.game_id }}">
+                <button type="submit" class="submit-button">Remove from Wishlist</button>
+            </form>
+        </div>
+        </div>
+      </main>
+    </div>
+</body>
+
+</div>
+</html>
