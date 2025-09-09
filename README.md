@@ -37,10 +37,7 @@ pip install -r requirements.txt
 ## 🚀 Execution
 
 From the project directory, with the virtual environment activated, run:
-
-
-flask run
----
+```bash flask run```
 
 ## 🔧 Configuration
 
