@@ -18,7 +18,7 @@ The application also uses **Flask Blueprints** to maintain separation of concern
 
 ## ⚙️ Installation
 
-```bash
+```
 # Navigate to where the app is stored
 cd <project-directory>
 
@@ -37,18 +37,18 @@ pip install -r requirements.txt
 ## 🚀 Execution
 
 From the project directory, with the virtual environment activated, run:
-```bash flask run```
+```flask run```
 
 ## 🔧 Configuration
 
 The app uses the following configuration values:
-```bashFLASK_APP``` → Entry point of the application (wsgi.py).
-```bashFLASK_ENV``` → Environment mode (development or production).
-```bashSECRET_KEY``` → Used to encrypt session data.
-```bashTESTING``` → Set to False when running the application; automatically set to True during tests.
-```bashWTF_CSRF_SECRET_KEY``` → Secret key for WTForms.
+```FLASK_APP``` → Entry point of the application (wsgi.py).
+```FLASK_ENV``` → Environment mode (development or production).
+```SECRET_KEY``` → Used to encrypt session data.
+```TESTING``` → Set to False when running the application; automatically set to True during tests.
+```WTF_CSRF_SECRET_KEY``` → Secret key for WTForms.
 
 ## Database Configuration
-```bashSQLALCHEMY_DATABASE_URI``` → URI of the SQLite database (default: created in the project root).
-```bashSQLALCHEMY_ECHO``` → If True, SQLAlchemy prints executed SQL statements.
-```bashREPOSITORY``` → Switch between in-memory repository and SQLAlchemy database repository.
+```SQLALCHEMY_DATABASE_URI``` → URI of the SQLite database (default: created in the project root).
+```SQLALCHEMY_ECHO``` → If True, SQLAlchemy prints executed SQL statements.
+```REPOSITORY``` → Switch between in-memory repository and SQLAlchemy database repository.
