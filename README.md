@@ -43,12 +43,18 @@ From the project directory, with the virtual environment activated, run:
 
 The app uses the following configuration values:
 ```FLASK_APP``` → Entry point of the application (wsgi.py).
+
 ```FLASK_ENV``` → Environment mode (development or production).
+
 ```SECRET_KEY``` → Used to encrypt session data.
+
 ```TESTING``` → Set to False when running the application; automatically set to True during tests.
+
 ```WTF_CSRF_SECRET_KEY``` → Secret key for WTForms.
 
 ## Database Configuration
 ```SQLALCHEMY_DATABASE_URI``` → URI of the SQLite database (default: created in the project root).
+
 ```SQLALCHEMY_ECHO``` → If True, SQLAlchemy prints executed SQL statements.
+
 ```REPOSITORY``` → Switch between in-memory repository and SQLAlchemy database repository.
