@@ -1,60 +1,61 @@
-# Flask Web Application
+## Description
 
-## 📌 Description
-This is a web application built with Python’s **Flask** framework. It demonstrates the use of:
+This repository contains an implementation of the domain model from Assignment 1. It contains unit tests which can be run through pytest. It also contains a simple Flask application that renders content of a Game object instance from our domain model on a blank HTML page. 
 
-- **Jinja** templating  
-- **WTForms** for form handling  
-- Architectural design patterns and principles, including:  
-  - Repository  
-  - Dependency Inversion  
-  - Single Responsibility  
+From here on you can **choose if you want to use the provided domain model or your own implementation from CodeRunner assignment 1**. The domain model implementation may have to be extended, and you may also decide to remove or modify test cases as it suits you. 
 
-The application also uses **Flask Blueprints** to maintain separation of concerns between application functions.  
+## Installation
 
-**Testing** includes both unit and end-to-end tests using **pytest**.  
+**Installation via requirements.txt**
 
----
-
-## ⚙️ Installation
-
-```
-# Navigate to where the app is stored
-cd <project-directory>
-
-# Create a virtual environment
-py -3 -m venv venv
-
-# Activate the virtual environment
-venv\Scripts\activate   # Windows
-# source venv/bin/activate  # macOS/Linux
-
-# Install dependencies
-pip install -r requirements.txt
-
+**Windows**
+```shell
+$ cd <project directory>
+$ py -3 -m venv venv
+$ venv\Scripts\activate
+$ pip install -r requirements.txt
 ```
 
-## 🚀 Execution
+**MacOS**
+```shell
+$ cd <project directory>
+$ python3 -m venv venv
+$ source venv/bin/activate
+$ pip install -r requirements.txt
+```
 
-From the project directory, with the virtual environment activated, run:
-```flask run```
+When using PyCharm, set the virtual environment using 'File or PyCharm'->'Settings' and select your project from the left menu. Select 'Project Interpreter', click on the gearwheel button and select 'Add Interpreter'. Click the 'Existing environment' radio button to select the virtual environment. 
 
-## 🔧 Configuration
+## Execution
 
-The app uses the following configuration values:
-```FLASK_APP``` → Entry point of the application (wsgi.py).
+**Running the application**
 
-```FLASK_ENV``` → Environment mode (development or production).
+From the *project directory*, and within the activated virtual environment (see *venv\Scripts\activate* above):
 
-```SECRET_KEY``` → Used to encrypt session data.
+````shell
+$ flask run
+```` 
 
-```TESTING``` → Set to False when running the application; automatically set to True during tests.
+## Testing
 
-```WTF_CSRF_SECRET_KEY``` → Secret key for WTForms.
+After you have configured pytest as the testing tool for PyCharm (File - Settings - Tools - Python Integrated Tools - Testing), you can then run tests from within PyCharm by right-clicking the tests folder and selecting "Run pytest in tests".
 
-## Database Configuration
-```SQLALCHEMY_DATABASE_URI``` → URI of the SQLite database (default: created in the project root).
+Alternatively, from a terminal in the root folder of the project, you can also call 'python -m pytest tests' to run all the tests. PyCharm also provides a built-in terminal, which uses the configured virtual environment. 
 
-```SQLALCHEMY_ECHO``` → If True, SQLAlchemy prints executed SQL statements.
+## Configuration
 
-```REPOSITORY``` → Switch between in-memory repository and SQLAlchemy database repository.
+The *project directory/.env* file contains variable settings. They are set with appropriate values.
+
+* `FLASK_APP`: Entry point of the application (should always be `wsgi.py`).
+* `FLASK_ENV`: The environment in which to run the application (either `development` or `production`).
+* `SECRET_KEY`: Secret key used to encrypt session data.
+* `TESTING`: Set to False for running the application. Overridden and set to True automatically when testing the application.
+* `WTF_CSRF_SECRET_KEY`: Secret key used by the WTForm library.
+ 
+## Data sources
+
+The data files are modified excerpts downloaded from:
+https://huggingface.co/datasets/FronkonGames/steam-games-dataset
+
+
+
